@@ -1,3 +1,4 @@
+const Joi=require('joi');
 const express=require('express');
 
 const app=express();
@@ -30,6 +31,20 @@ res.send([1,2,3]);
 
 
 app.post('/api/courses',(req,res)=>{
+
+   // const schema={
+   //    name: Joi.string().min(3).required()
+   // };
+
+   const schema=Joi.object({name: Joi.string().min(3).required()});
+
+   const result=schema.validate(req.body);
+   console.log(result);
+   if(!req.body.name || req.body.name.length <3){
+      res.status(400).send('name is required minimum of 3 character');
+      return;
+   }//above validation logic
+
    const course={
    id: courses.length+1,
    name: req.body.name
@@ -38,8 +53,14 @@ app.post('/api/courses',(req,res)=>{
    res.send(course);
 });
 
+
+
+
+
+
+
 //PORT 
 const port=process.env.PORT || 3000;
 
 
-app.listen(port, ()=>console.log(`listening on por ${port}....`));
+app.listen(port, ()=>console.log(`listening on port ${port}....`));
