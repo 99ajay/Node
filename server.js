@@ -38,9 +38,26 @@ app.get("/getMultiply/:num1/:num2/",function(req,res){  ///sending parameter as 
     let num1=req.params.num1;
     let num2=req.params.num2;
     let mul=num1*num2;
-    res.end("multiply of two number is "+mul);
+    res.send("multiply of two number is "+mul);
 
 });
+
+//PATCH---update
+
+app.patch("/sayHell",function(req,res){
+    let datatoupdate=req.body;
+    for(key in datatoupdate){
+        user[key]=datatoupdate[key];
+    }
+   res.json({
+    message:"data updated successfully",
+    user:user
+   })
+    // console.log(datatoupdate);
+    // res.send("hello from the patch ");
+})
+
+
 
 app.listen(3000,function(){
     console.log("server is started listening");
