@@ -6,3 +6,16 @@ restapi is important :---
 
 3.route name should be same 
 
+4.data should be in JSON format 
+  for transfer
+5.process should be stateless (one request response cycle should be independent );
+
+
+
+
+status code :----
+
+
+
+
+
