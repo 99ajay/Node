@@ -38,5 +38,6 @@ status code :----
 
 
 
-
+middleware---->
+Object.keys(data)-----gives array of keys ["jdk","djjd"];
 
