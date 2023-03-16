@@ -1,0 +1,8 @@
+restapi is important :---
+
+1.Represenational state transfer--
+
+2.The response should be the same irrespective of making request 
+
+3.route name should be same 
+
