@@ -20,6 +20,22 @@ status code :----
 
 
 
+#######################################
+
+1..as code execution-->As soon as res.end line is exeuted there is no further execution of lower handler function even if they satisfies all the condition.
+
+2..Res: when a request is send then it will execute all the route handlers serially
+
+3..Next :--sends request to the handler below it 
+
+***if*** request hits your handler 
+         use->it will always execute the funnction 
+         get->route  + get method then it will execute the function
+         post->route + post method then it will execute the function
+         patch->route + patch method then it will execute the function
+         delete->route + delete method then it will execute the function 
+         
+
 
 
 
