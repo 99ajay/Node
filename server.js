@@ -59,6 +59,16 @@ app.patch("/sayHell",function(req,res){
 
 
 
+//DELETE ---DELETE  A VALUE IN JSON FORMAT
+app.delete("/sayHell",function(req,res){
+    user={};
+    res.json({
+        message:"deletion done",
+        user:user
+    })
+})
+
+
 app.listen(3000,function(){
     console.log("server is started listening");
 });
