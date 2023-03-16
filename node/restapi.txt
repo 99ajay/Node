@@ -15,6 +15,11 @@ restapi is important :---
 
 status code :----
 
+//get(from server2.js)[below condition is valid only when the route pathis same ]
+--> if there is more than one get function in the node server then the only that app.get will run which comes the first and rest will not be executed 
+
+
+
 
 
 
