@@ -53,6 +53,16 @@ app.post('/api/courses',(req,res)=>{
    res.send(course);
 });
 
+//update..........
+
+app.put('./api/courses/:id',(req,res)=>{
+
+   
+   const schema=Joi.object({name: Joi.string().min(3).required()});
+
+   const result=schema.validate(req.body);
+});
+
 
 
 

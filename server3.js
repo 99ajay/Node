@@ -19,7 +19,7 @@ app.post("/simple",function(req,res,next){
 
 app.post("/simple",function(req,res){
     console.log("data",req.body);
-    res.send("Hello from the post 2");
+    res.status(200).send("Hello from the post 2");
 })
 
 
