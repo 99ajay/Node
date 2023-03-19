@@ -41,3 +41,10 @@ status code :----
 middleware---->
 Object.keys(data)-----gives array of keys ["jdk","djjd"];
 
+
+
+Mongo passward:----
+  0FsmgjbR0H5o6Ug7
+user:-dbUser
+
+mongodb+srv://dbUser:<password>@cluster0.jnvtpim.mongodb.net/?retryWrites=true&w=majority
