@@ -13,19 +13,27 @@ mongoose.connect(dblink).then(function(){
 let userSchema=new Schema({
     name:{
         type:String,
-        required:true
+        required:[true,"name is not given please provide the name"]
     },
     password:{
         type:String,
-        required:true
+        required:[true,"password is missing please provide password"]
     },
     confirmPassword:{
         type:String,
-        required:true
+        required:[true,"confirmed password is missing"],
+        //custom 
+        validate:{
+        validator:function(){
+            return this.password==this.confirmPassword;
+        },
+        //error message 
+        message:"Password mismatch"
+    }
     },
     email:{
         type:String,
-        required:true,
+        required:[true,"email is missing"],
         unique:true
     },
     phoneno:{

@@ -16,6 +16,7 @@ const userModel=require("./userModel");
 //pic
 
 app.post("/signup",async function(req,res){
+    try{
     let data=req.body;
     console.log(data);
     let newUser=await userModel.create(data);
@@ -23,6 +24,10 @@ app.post("/signup",async function(req,res){
         message:"data received",
         data:data
     })
+}
+catch(err){
+    res.send(err.message);
+}
 })
 app.listen(3000,function(){
     console.log("server is started listening at 3000 port");
