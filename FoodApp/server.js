@@ -1,11 +1,15 @@
 const express=require("express");
 const {Schema} = require("mongoose");
 const mongoose=require('mongoose');
-
+const userModel=require("./userModel");
+const cookieParser = require("cookie-parser");
+ 
 const app=express();
 app.use(express.json());
 
-const userModel=require("./userModel");
+
+app.use(cookieParser());
+
 
 //sighup input:
 //name
@@ -43,6 +47,7 @@ app.post("/login",async function(req,res){
             console.log(user);
             if(user){
                 if(user.password==password){
+                    res.cookie("token","sample_value");
                     res.send("User logged in");
                 }
                 else{
@@ -64,7 +69,13 @@ app.post("/login",async function(req,res){
         console.log(err.message);
     }
 })
+app.get("/users",function(req,res){
+    console.log(req.cookies);
+})
+
+
 app.listen(3000,function(){
+    
     console.log("server is started listening at 3000 port");
 
 })
