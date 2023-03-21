@@ -3,12 +3,16 @@ const {Schema} = require("mongoose");
 const mongoose=require('mongoose');
 const userModel=require("./userModel");
 const cookieParser = require("cookie-parser");
- 
+
+var jwt=require("jsonwebtoken");
+const secretkeys="dehed83873i3dejje";
+
 const app=express();
 app.use(express.json());
 
 
 app.use(cookieParser());
+// app.use(bodyparser.urlencoded({extended : false}));
 
 
 //sighup input:
@@ -37,7 +41,7 @@ catch(err){
 
 
 
-app.post("/login",async function(req,res){
+app.post("/login/",async function(req,res){
     try{
         let data = req.body;
 
@@ -45,9 +49,15 @@ app.post("/login",async function(req,res){
         if(email && password){
             let user=await userModel.findOne({email:email});
             console.log(user);
+            
             if(user){
-                if(user.password==password){
-                    res.cookie("token","sample_value");
+                if(user.password===password){
+                    //create JWT -> payload,secretkeys,algo by default SHA-256
+
+                    const token=jwt.sign({data:user['_id']},secretkeys);
+                    console.log(token);
+
+                    res.cookie("JWT",token);
                     res.send("User logged in");
                 }
                 else{
